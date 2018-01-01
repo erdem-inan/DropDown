@@ -174,7 +174,7 @@ class ViewController: UIViewController {
 		]
 		
 		// Action triggered on selection
-		chooseArticleDropDown.selectionAction = { [weak self] (index, item) in
+		chooseArticleDropDown.selectionAction = { [weak self] (index, item, _) in
 			self?.chooseArticleButton.setTitle(item, for: .normal)
 		}
         
@@ -221,7 +221,7 @@ class ViewController: UIViewController {
 		]
 		
 		// Action triggered on selection
-		amountDropDown.selectionAction = { [weak self] (index, item) in
+		amountDropDown.selectionAction = { [weak self] (index, item, _) in
 			self?.amountButton.setTitle(item, for: .normal)
 		}
 	}
@@ -242,7 +242,7 @@ class ViewController: UIViewController {
 		]
 		
 		// Action triggered on selection
-		chooseDropDown.selectionAction = { [weak self] (index, item) in
+		chooseDropDown.selectionAction = { [weak self] (index, item, _) in
 			self?.chooseButton.setTitle(item, for: .normal)
 		}
 	}
@@ -260,7 +260,7 @@ class ViewController: UIViewController {
 			"Click anywhere to dismiss."
 		]
         
-        centeredDropDown.selectionAction = { [weak self] (index, item) in
+        centeredDropDown.selectionAction = { [weak self] (index, item, _) in
             self?.centeredDropDownButton.setTitle(item, for: .normal)
         }
 	}

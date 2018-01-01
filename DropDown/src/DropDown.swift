@@ -10,7 +10,7 @@ import UIKit
 
 public typealias Index = Int
 public typealias Closure = () -> Void
-public typealias SelectionClosure = (Index, String) -> Void
+public typealias SelectionClosure = (Index, String, DropDownCell) -> Void
 public typealias MultiSelectionClosure = ([Index], [String]) -> Void
 public typealias ConfigurationClosure = (Index, String) -> String
 public typealias CellConfigurationClosure = (Index, String, DropDownCell) -> Void
@@ -1030,7 +1030,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let selectedRowIndex = (indexPath as NSIndexPath).row
-        
+        let cell = tableView.cellForRow(at: indexPath) as! DropDownCell
         
         // are we in multi-selection mode?
         if let multiSelectionCallback = multiSelectionAction {
@@ -1048,8 +1048,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 
 				let selectedRowIndicesArray = Array(selectedRowIndices)
 				let selectedRows = selectedRowIndicesArray.map { dataSource[$0] }
-                
-                selectionAction?(selectedRowIndex, dataSource[selectedRowIndex])
+                selectionAction?(selectedRowIndex, dataSource[selectedRowIndex], cell)
                 multiSelectionCallback(selectedRowIndicesArray, selectedRows)
                 tableView.reloadData()
                 return
@@ -1059,7 +1058,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         // Perform single selection logic
         selectedRowIndices.removeAll()
         selectedRowIndices.insert(selectedRowIndex)
-        selectionAction?(selectedRowIndex, dataSource[selectedRowIndex])
+        selectionAction?(selectedRowIndex, dataSource[selectedRowIndex], cell)
         
         if let _ = anchorView as? UIBarButtonItem {
             // DropDown's from UIBarButtonItem are menus so we deselect the selected menu right after selection
