@@ -377,6 +377,8 @@ public final class DropDown: UIView {
 	/// The action to execute when the user selects a cell.
 	public var selectionAction: SelectionClosure?
     
+    public var shouldDismissOnSelection = true
+    
     /**
     The action to execute when the user selects multiple cells.
     
@@ -1064,8 +1066,9 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
             deselectRow(at: selectedRowIndex)
         }
         
-        hide()
-    
+        if shouldDismissOnSelection {
+            hide()
+        }
 	}
 
 }
