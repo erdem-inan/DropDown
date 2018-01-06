@@ -1060,10 +1060,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         selectedRowIndices.insert(selectedRowIndex)
         selectionAction?(selectedRowIndex, dataSource[selectedRowIndex], cell)
         
-        if let _ = anchorView as? UIBarButtonItem {
-            // DropDown's from UIBarButtonItem are menus so we deselect the selected menu right after selection
-            deselectRow(at: selectedRowIndex)
-        }
+        deselectRow(at: selectedRowIndex)
         
         if shouldDismissOnSelection {
             hide()

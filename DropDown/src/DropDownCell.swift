@@ -13,7 +13,7 @@ open class DropDownCell: UITableViewCell {
 	//UI
 	@IBOutlet open weak var optionLabel: UILabel!
 	
-	var selectedBackgroundColor: UIColor?
+	public var selectedBackgroundColor: UIColor?
 
 }
 
