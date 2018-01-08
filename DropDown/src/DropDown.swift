@@ -1069,6 +1069,16 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 
 }
 
+//MARK: - Helper
+
+extension DropDown {
+    
+    func cell(for indexPath: IndexPath) -> DropDownCell {
+        return tableView.cellForRow(at: indexPath) as! DropDownCell
+    }
+    
+}
+
 //MARK: - Auto dismiss
 
 extension DropDown {
